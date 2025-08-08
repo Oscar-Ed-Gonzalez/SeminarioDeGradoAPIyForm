@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Operaciones Sospechosas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+
+<body class="p-4">
+
+    <h1 class="text-center mb-4">SUPERINTENDENCIA FINANCIERA DE COLOMBIA</h1>
+    <div class="container border">
+        <h5 class="text-center">REPORTE DE OPERACIONES SOSPECHOSAS</h5>
+    </div>
+    <div class="container border p-4 mt-1">
+        <h5 class="mt-4">PARA DILIGENCIAR EL REPORTE CORRECTAMENTE CONSULTE EL INSTRUCTIVO RESPECTIVO</h5>
+        <!-- Encabezado -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label class="form-label">1. Número del Reporte</label>
+                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">2. Fecha</label>
+                <input type="date" class="form-control" name="fechaReporte" id="fechaReporte">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">3. Clase de Reporte</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="claseReporte" id="inicial">
+                    <label class="form-check-label" for="inicial">Reporte Inicial</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="claseReporte" id="correccion">
+                    <label class="form-check-label" for="correccion">Corrección a Reporte Anterior</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="claseReporte" id="adicion">
+                    <label class="form-check-label" for="adicion">Adición a Reporte Anterior</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-label">4. En caso de correccion o adicion al reporte numero</label>
+                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección I -->
+    <div class="container border p-4 mt-2">
+        <h5 class="mt-4">SECCIÓN I - Información de la Institución que reporta</h5>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">5. Nombre de la entidad</label>
+                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">6. Tipo de entidad</label>
+                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">7. Código de entidad</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-label">Sucursal u oficina que presento la operacion sospechosa</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">8. Código de la Sucursal</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">9. Nombre de la Sucursal</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="container border p-4 mt-2">
+        <!-- Sección II -->
+        <h5 class="mt-4">SECCIÓN II - Información de la(s) Persona(s) Implicada en la Operación Sospechosa</h5>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">10. Nombre Completo o Razón Social</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">11. Número de Identificación</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">12. Dirección Domicilio</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">13. Departamento</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">14. Municipio</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label class="form-label">15. Teléfono(s)</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">16. Cámara de Comercio</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">17. Dirección Trabajo</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">18. Departamento</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">19. Municipio</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">20. Teléfono(s)</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">21. Actividad Económica</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">22. CIIU</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">23. Fecha de Vinculación</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">24. Relación de la Persona con la entidad</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  id="cliente" name="relacionPersonaEntidad">
+                <label class="form-check-label" for="cliente">Cliente</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="empleado" name="relacionPersonaEntidad" >
+                <label class="form-check-label" for="empleado">Empleado</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  id="accionista" name="relacionPersonaEntidad">
+                <label class="form-check-label" for="accionista">Accionista</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  id="otra" name="relacionPersonaEntidad">
+                <label class="form-check-label" for="otra">Otra</label>
+                <input type="text" class="form-control d-inline w-auto" placeholder="¿Cuál?">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-5">
+                <label class="form-label">25. ¿Está vinculada aún la persona con la Entidad?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vinculadoPersonaEntidad" id="si">
+                    <label class="form-check-label" for="si">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vinculadoPersonaEntidad" id="no">
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label">Si no está, ¿por qué?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vinculado2" id="RetiroVoluntario">
+                    <label class="form-check-label" for="RetiroVoluntario">Retiro voluntario</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vinculado2" id="Decision">
+                    <label class="form-check-label" for="Decision">Decision de la institucion</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="vinculado2" id="Suspension">
+                    <label class="form-check-label" for="Suspension">Suspension</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">26. Promedio de ingresos mensuales</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Fecha del promedio</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="container border p-4 mt-2">
+        <!-- Sección III -->
+        <h5 class="mt-4">SECCIÓN III - Información de la Operación Sospechosa</h5>
+        <div class="mb-3">
+            <label class="form-label">27. Valor Total de la Operación Sospechosa ($)</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">28. Tipo de operación</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoOperacion" id="nacional">
+                <label class="form-check-label" for="nacional">Operación Nacional</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoOperacion" id="internacional">
+                <label class="form-check-label" for="internacional">Operación Internacional</label>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="form-label">29. Fecha de la operación sospechosa</label>
+            <div class="col-md-6">
+                <label class="form-label">Desde</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Hasta</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="container border p-4 mt-2">
+        <h5 class="mt-4"></h5>
+        <div class="row mb-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
+    
+</body>
+</html>

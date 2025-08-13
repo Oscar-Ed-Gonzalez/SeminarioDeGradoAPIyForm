@@ -1,104 +1,115 @@
-/* ───────────────────────────────────────────────
-   1. TABLA CABECERA DEL REPORTE
-   ───────────────────────────────────────────── */
-CREATE TABLE reporte_ros (
-    id_reporte               INT            IDENTITY(1,1) PRIMARY KEY,
+CREATE DATABASE ros_db
+  WITH ENCODING 'UTF8'
+       LC_COLLATE 'es_CO.UTF-8'
+       LC_CTYPE   'es_CO.UTF-8'
+       TEMPLATE template0;
+
+CREATE TABLE public.reporte_ros (
+    id_reporte               INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     numero_reporte           VARCHAR(20)    NOT NULL,
     fecha_reporte            DATE           NOT NULL,
     /* I = inicial, C = corrección, A = adición */
     clase_reporte            CHAR(1)        NOT NULL
         CHECK (clase_reporte IN ('I','C','A')),
     /* solo aplica si clase_reporte ∈ {C, A} */
-    numero_reporte_anterior  VARCHAR(20)    NULL
+    numero_reporte_anterior  VARCHAR(20)
 );
-GO
 
 /* ───────────────────────────────────────────────
    2. INSTITUCIÓN QUE REPORTA
    ───────────────────────────────────────────── */
-CREATE TABLE institucion_reportante (
-    id_institucion           INT            IDENTITY(1,1) PRIMARY KEY,
-    id_reporte               INT            NOT NULL 
-        REFERENCES reporte_ros (id_reporte),
-    nombre_entidad           VARCHAR(150)   NOT NULL,
-    tipo_entidad             VARCHAR(100)   NOT NULL,
-    codigo_entidad           VARCHAR(20)    NOT NULL,
-    sucursal_oficina         VARCHAR(150)   NULL,
-    codigo_sucursal          VARCHAR(20)    NULL,
-    nombre_sucursal          VARCHAR(100)   NULL
+CREATE TABLE public.institucion_reportante (
+    id_institucion           INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_reporte               INTEGER       NOT NULL
+        REFERENCES public.reporte_ros (id_reporte),
+        -- Si quieres borrar en cascada el detalle al borrar el reporte, usa:
+        -- REFERENCES public.reporte_ros (id_reporte) ON DELETE CASCADE,
+    nombre_entidad           VARCHAR(150)  NOT NULL,
+    tipo_entidad             VARCHAR(100)  NOT NULL,
+    codigo_entidad           VARCHAR(20)   NOT NULL,
+    sucursal_oficina         VARCHAR(150),
+    codigo_sucursal          VARCHAR(20),
+    nombre_sucursal          VARCHAR(100)
 );
-GO
 
 /* ───────────────────────────────────────────────
    3. PERSONAS IMPLICADAS (1 ⇾ N por reporte)
    ───────────────────────────────────────────── */
-CREATE TABLE persona_implicada (
-    id_persona                       INT           IDENTITY(1,1) PRIMARY KEY,
-    id_reporte                       INT           NOT NULL 
-        REFERENCES reporte_ros (id_reporte),
+CREATE TABLE public.persona_implicada (
+    id_persona                       INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_reporte                       INTEGER      NOT NULL
+        REFERENCES public.reporte_ros (id_reporte),
+        -- O usa ON DELETE CASCADE si te conviene:
+        -- REFERENCES public.reporte_ros (id_reporte) ON DELETE CASCADE,
 
     /* Datos de identificación */
-    nombre_completo                  VARCHAR(150)  NOT NULL,
-    numero_identificacion            VARCHAR(40)   NOT NULL,
+    nombre_completo                  VARCHAR(150) NOT NULL,
+    numero_identificacion            VARCHAR(40)  NOT NULL,
 
     /* Domicilio */
-    direccion_domicilio              VARCHAR(150)  NULL,
-    departamento_domicilio           VARCHAR(100)  NULL,
-    municipio_domicilio              VARCHAR(100)  NULL,
-    telefono_domicilio               VARCHAR(20)   NULL,
+    direccion_domicilio              VARCHAR(150),
+    departamento_domicilio           VARCHAR(100),
+    municipio_domicilio              VARCHAR(100),
+    telefono_domicilio               VARCHAR(20),
 
     /* Datos comerciales / laborales */
-    camara_comercio                  VARCHAR(50)   NULL,
-    direccion_trabajo                VARCHAR(150)  NULL,
-    departamento_trabajo             VARCHAR(100)  NULL,
-    municipio_trabajo                VARCHAR(100)  NULL,
-    telefono_trabajo                 VARCHAR(20)   NULL,
+    camara_comercio                  VARCHAR(50),
+    direccion_trabajo                VARCHAR(150),
+    departamento_trabajo             VARCHAR(100),
+    municipio_trabajo                VARCHAR(100),
+    telefono_trabajo                 VARCHAR(20),
 
-    correo_electronico               VARCHAR(254)  NULL,
+    correo_electronico               VARCHAR(254),
 
     /* Perfil económico */
-    actividad_economica              VARCHAR(150)  NULL,
-    ciiu                              VARCHAR(10)   NULL,
-    fecha_vinculacion                DATE          NULL,
+    actividad_economica              VARCHAR(150),
+    ciiu                             VARCHAR(10),
+    fecha_vinculacion                DATE,
 
     /* Relación con la entidad:  
        C = cliente, E = empleado, A = accionista, O = otra */
-    relacion_entidad                 CHAR(1)       NULL
+    relacion_entidad                 CHAR(1)
         CHECK (relacion_entidad IN ('C','E','A','O')),
 
-    vinculada_entidad                BIT           NOT NULL,   -- 1 = sí, 0 = no
-    /* Si NO está vinculada → causa y fecha */
-    causa_no_vinculacion             CHAR(1)       NULL        -- R, D, S
-        CHECK (causa_no_vinculacion IN ('R','D','S')),         -- R = retiro, D = decisión, S = suspensión
-    fecha_no_vinculacion             DATE          NULL,
+    vinculada_entidad                BOOLEAN      NOT NULL,   -- TRUE = sí, FALSE = no
 
-    promedio_ingresos_mensuales      DECIMAL(18,2) NULL,
-    fecha_promedio_ingresos          DATE          NULL
+    /* Si NO está vinculada → causa y fecha */
+    causa_no_vinculacion             CHAR(1)
+        CHECK (causa_no_vinculacion IN ('R','D','S')),
+        -- R = retiro, D = decisión, S = suspensión
+    fecha_no_vinculacion             DATE,
+
+    promedio_ingresos_mensuales      NUMERIC(18,2),
+    fecha_promedio_ingresos          DATE
 );
-GO
 
 /* ───────────────────────────────────────────────
    4. OPERACIÓN SOSPECHOSA (1 ⇾ 1 por reporte)
    ───────────────────────────────────────────── */
-CREATE TABLE operacion_sospechosa (
-    id_operacion             INT            IDENTITY(1,1) PRIMARY KEY,
-    id_reporte               INT            NOT NULL 
-        REFERENCES reporte_ros (id_reporte),
+CREATE TABLE public.operacion_sospechosa (
+    id_operacion             INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_reporte               INTEGER       NOT NULL
+        REFERENCES public.reporte_ros (id_reporte),
+        -- O usa ON DELETE CASCADE si te conviene:
+        -- REFERENCES public.reporte_ros (id_reporte) ON DELETE CASCADE,
 
-    valor_total               DECIMAL(18,2) NOT NULL,
+    valor_total              NUMERIC(18,2) NOT NULL,
     /* N = nacional, I = internacional */
-    tipo_operacion            CHAR(1)       NOT NULL
+    tipo_operacion           CHAR(1)       NOT NULL
         CHECK (tipo_operacion IN ('N','I')),
 
-    fecha_operacion_desde     DATE          NOT NULL,
-    fecha_operacion_hasta     DATE          NOT NULL
+    fecha_operacion_desde    DATE          NOT NULL,
+    fecha_operacion_hasta    DATE          NOT NULL
 );
-GO
 
 /* ───────────────────────────────────────────────
    5. ÍNDICES SUGERIDOS
    ───────────────────────────────────────────── */
-CREATE INDEX idx_reporte_fecha ON reporte_ros (fecha_reporte);
-CREATE INDEX idx_persona_identificacion ON persona_implicada (numero_identificacion);
-CREATE INDEX idx_operacion_valor ON operacion_sospechosa (valor_total);
-GO
+CREATE INDEX idx_reporte_fecha
+    ON public.reporte_ros (fecha_reporte);
+
+CREATE INDEX idx_persona_identificacion
+    ON public.persona_implicada (numero_identificacion);
+
+CREATE INDEX idx_operacion_valor
+    ON public.operacion_sospechosa (valor_total);

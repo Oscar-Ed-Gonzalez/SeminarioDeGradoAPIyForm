@@ -18,36 +18,38 @@
     </div>
     <div class="container border p-4 mt-1">
         <h5 class="mt-4">PARA DILIGENCIAR EL REPORTE CORRECTAMENTE CONSULTE EL INSTRUCTIVO RESPECTIVO</h5>
+
         <!-- Encabezado -->
         <div class="row mb-3">
             <div class="col-md-3">
-                <label class="form-label">1. Número del Reporte</label>
-                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+                <label class="form-label" for="numero_reporte">1. Número del Reporte</label>
+                <input type="text" class="form-control" id="numero_reporte" name="numero_reporte">
             </div>
             <div class="col-md-3">
-                <label class="form-label">2. Fecha</label>
-                <input type="date" class="form-control" name="fechaReporte" id="fechaReporte">
+                <label class="form-label" for="fecha_reporte">2. Fecha</label>
+                <input type="date" class="form-control" id="fecha_reporte" name="fecha_reporte">
             </div>
             <div class="col-md-6">
                 <label class="form-label">3. Clase de Reporte</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="claseReporte" id="inicial">
-                    <label class="form-check-label" for="inicial">Reporte Inicial</label>
+                    <input class="form-check-input" type="radio" name="clase_reporte" id="clase_inicial" value="I">
+                    <label class="form-check-label" for="clase_inicial">Reporte Inicial</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="claseReporte" id="correccion">
-                    <label class="form-check-label" for="correccion">Corrección a Reporte Anterior</label>
+                    <input class="form-check-input" type="radio" name="clase_reporte" id="clase_correccion" value="C">
+                    <label class="form-check-label" for="clase_correccion">Corrección a Reporte Anterior</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="claseReporte" id="adicion">
-                    <label class="form-check-label" for="adicion">Adición a Reporte Anterior</label>
+                    <input class="form-check-input" type="radio" name="clase_reporte" id="clase_adicion" value="A">
+                    <label class="form-check-label" for="clase_adicion">Adición a Reporte Anterior</label>
                 </div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
-                <label class="form-label">4. En caso de correccion o adicion al reporte numero</label>
-                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+                <label class="form-label" for="numero_reporte_anterior">4. En caso de corrección o adición al reporte
+                    número</label>
+                <input type="text" class="form-control" id="numero_reporte_anterior" name="numero_reporte_anterior">
             </div>
         </div>
     </div>
@@ -57,212 +59,239 @@
         <h5 class="mt-4">SECCIÓN I - Información de la Institución que reporta</h5>
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">5. Nombre de la entidad</label>
-                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+                <label class="form-label" for="nombre_entidad">5. Nombre de la entidad</label>
+                <input type="text" class="form-control" id="nombre_entidad" name="nombre_entidad">
             </div>
             <div class="col-md-3">
-                <label class="form-label">6. Tipo de entidad</label>
-                <input type="text" class="form-control" name="numeroReporte" id="numeroReporte">
+                <label class="form-label" for="tipo_entidad">6. Tipo de entidad</label>
+                <input type="text" class="form-control" id="tipo_entidad" name="tipo_entidad">
             </div>
             <div class="col-md-3">
-                <label class="form-label">7. Código de entidad</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="codigo_entidad">7. Código de entidad</label>
+                <input type="text" class="form-control" id="codigo_entidad" name="codigo_entidad">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
-                <label class="form-label">Sucursal u oficina que presento la operacion sospechosa</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="sucursal_presenta_operacion">Sucursal u oficina que presentó la operación
+                    sospechosa</label>
+                <input type="text" class="form-control" id="sucursal_presenta_operacion"
+                    name="sucursal_presenta_operacion">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">8. Código de la Sucursal</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="codigo_sucursal">8. Código de la Sucursal</label>
+                <input type="text" class="form-control" id="codigo_sucursal" name="codigo_sucursal">
             </div>
             <div class="col-md-6">
-                <label class="form-label">9. Nombre de la Sucursal</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="nombre_sucursal">9. Nombre de la Sucursal</label>
+                <input type="text" class="form-control" id="nombre_sucursal" name="nombre_sucursal">
             </div>
         </div>
     </div>
 
+    <!-- Sección II -->
     <div class="container border p-4 mt-2">
-        <!-- Sección II -->
         <h5 class="mt-4">SECCIÓN II - Información de la(s) Persona(s) Implicada en la Operación Sospechosa</h5>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">10. Nombre Completo o Razón Social</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="nombre_completo_o_razon_social">10. Nombre Completo o Razón
+                    Social</label>
+                <input type="text" class="form-control" id="nombre_completo_o_razon_social"
+                    name="nombre_completo_o_razon_social">
             </div>
             <div class="col-md-6">
-                <label class="form-label">11. Número de Identificación</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="numero_identificacion">11. Número de Identificación</label>
+                <input type="text" class="form-control" id="numero_identificacion" name="numero_identificacion">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">12. Dirección Domicilio</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="direccion_domicilio">12. Dirección Domicilio</label>
+                <input type="text" class="form-control" id="direccion_domicilio" name="direccion_domicilio">
             </div>
             <div class="col-md-3">
-                <label class="form-label">13. Departamento</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="departamento_domicilio">13. Departamento</label>
+                <input type="text" class="form-control" id="departamento_domicilio" name="departamento_domicilio">
             </div>
             <div class="col-md-3">
-                <label class="form-label">14. Municipio</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="municipio_domicilio">14. Municipio</label>
+                <input type="text" class="form-control" id="municipio_domicilio" name="municipio_domicilio">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-4">
-                <label class="form-label">15. Teléfono(s)</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="telefonos_domicilio">15. Teléfono(s)</label>
+                <input type="text" class="form-control" id="telefonos_domicilio" name="telefonos_domicilio">
             </div>
             <div class="col-md-4">
-                <label class="form-label">16. Cámara de Comercio</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="camara_comercio">16. Cámara de Comercio</label>
+                <input type="text" class="form-control" id="camara_comercio" name="camara_comercio">
             </div>
             <div class="col-md-4">
-                <label class="form-label">17. Dirección Trabajo</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="direccion_trabajo">17. Dirección Trabajo</label>
+                <input type="text" class="form-control" id="direccion_trabajo" name="direccion_trabajo">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">18. Departamento</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="departamento_trabajo">18. Departamento</label>
+                <input type="text" class="form-control" id="departamento_trabajo" name="departamento_trabajo">
             </div>
             <div class="col-md-6">
-                <label class="form-label">19. Municipio</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="municipio_trabajo">19. Municipio</label>
+                <input type="text" class="form-control" id="municipio_trabajo" name="municipio_trabajo">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">20. Teléfono(s)</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="telefonos_trabajo">20. Teléfono(s)</label>
+                <input type="text" class="form-control" id="telefonos_trabajo" name="telefonos_trabajo">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control">
+                <label class="form-label" for="correo_electronico">Correo electrónico</label>
+                <input type="email" class="form-control" id="correo_electronico" name="correo_electronico">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">21. Actividad Económica</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="actividad_economica">21. Actividad Económica</label>
+                <input type="text" class="form-control" id="actividad_economica" name="actividad_economica">
             </div>
             <div class="col-md-3">
-                <label class="form-label">22. CIIU</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="ciiu">22. CIIU</label>
+                <input type="text" class="form-control" id="ciiu" name="ciiu">
             </div>
             <div class="col-md-3">
-                <label class="form-label">23. Fecha de Vinculación</label>
-                <input type="date" class="form-control">
+                <label class="form-label" for="fecha_vinculacion">23. Fecha de Vinculación</label>
+                <input type="date" class="form-control" id="fecha_vinculacion" name="fecha_vinculacion">
             </div>
         </div>
+
         <div class="mb-3">
             <label class="form-label">24. Relación de la Persona con la entidad</label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio"  id="cliente" name="relacionPersonaEntidad">
-                <label class="form-check-label" for="cliente">Cliente</label>
+                <input class="form-check-input" type="radio" id="relacion_cliente" name="relacion_persona_entidad"
+                    value="cliente">
+                <label class="form-check-label" for="relacion_cliente">Cliente</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="empleado" name="relacionPersonaEntidad" >
-                <label class="form-check-label" for="empleado">Empleado</label>
+                <input class="form-check-input" type="radio" id="relacion_empleado" name="relacion_persona_entidad"
+                    value="empleado">
+                <label class="form-check-label" for="relacion_empleado">Empleado</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio"  id="accionista" name="relacionPersonaEntidad">
-                <label class="form-check-label" for="accionista">Accionista</label>
+                <input class="form-check-input" type="radio" id="relacion_accionista" name="relacion_persona_entidad"
+                    value="accionista">
+                <label class="form-check-label" for="relacion_accionista">Accionista</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio"  id="otra" name="relacionPersonaEntidad">
-                <label class="form-check-label" for="otra">Otra</label>
-                <input type="text" class="form-control d-inline w-auto" placeholder="¿Cuál?">
+                <input class="form-check-input" type="radio" id="relacion_otra" name="relacion_persona_entidad"
+                    value="otra">
+                <label class="form-check-label" for="relacion_otra">Otra</label>
+                <input type="text" class="form-control d-inline w-auto" id="relacion_persona_entidad_otra"
+                    placeholder="¿Cuál?">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-5">
                 <label class="form-label">25. ¿Está vinculada aún la persona con la Entidad?</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vinculadoPersonaEntidad" id="si">
-                    <label class="form-check-label" for="si">Sí</label>
+                    <input class="form-check-input" type="radio" id="vinculado_si" name="vinculado_aun" value="si">
+                    <label class="form-check-label" for="vinculado_si">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vinculadoPersonaEntidad" id="no">
-                    <label class="form-check-label" for="no">No</label>
+                    <input class="form-check-input" type="radio" id="vinculado_no" name="vinculado_aun" value="no">
+                    <label class="form-check-label" for="vinculado_no">No</label>
                 </div>
             </div>
             <div class="col-md-5">
                 <label class="form-label">Si no está, ¿por qué?</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vinculado2" id="RetiroVoluntario">
-                    <label class="form-check-label" for="RetiroVoluntario">Retiro voluntario</label>
+                    <input class="form-check-input" type="radio" id="causa_retiro_voluntario"
+                        name="causa_no_vinculacion" value="retiro_voluntario">
+                    <label class="form-check-label" for="causa_retiro_voluntario">Retiro voluntario</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vinculado2" id="Decision">
-                    <label class="form-check-label" for="Decision">Decision de la institucion</label>
+                    <input class="form-check-input" type="radio" id="causa_decision_institucion"
+                        name="causa_no_vinculacion" value="decision_institucion">
+                    <label class="form-check-label" for="causa_decision_institucion">Decisión de la institución</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="vinculado2" id="Suspension">
-                    <label class="form-check-label" for="Suspension">Suspension</label>
+                    <input class="form-check-input" type="radio" id="causa_suspension" name="causa_no_vinculacion"
+                        value="suspension">
+                    <label class="form-check-label" for="causa_suspension">Suspensión</label>
                 </div>
             </div>
             <div class="col-md-2">
-                <label class="form-label">Fecha</label>
-                <input type="date" class="form-control">
+                <label class="form-label" for="fecha_no_vinculacion">Fecha</label>
+                <input type="date" class="form-control" id="fecha_no_vinculacion" name="fecha_no_vinculacion">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-md-6">
-                <label class="form-label">26. Promedio de ingresos mensuales</label>
-                <input type="number" class="form-control">
+                <label class="form-label" for="promedio_ingresos_mensuales">26. Promedio de ingresos mensuales</label>
+                <input type="number" class="form-control" id="promedio_ingresos_mensuales"
+                    name="promedio_ingresos_mensuales">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Fecha del promedio</label>
-                <input type="date" class="form-control">
+                <label class="form-label" for="fecha_promedio_ingresos">Fecha del promedio</label>
+                <input type="date" class="form-control" id="fecha_promedio_ingresos" name="fecha_promedio_ingresos">
             </div>
         </div>
     </div>
 
+    <!-- Sección III -->
     <div class="container border p-4 mt-2">
-        <!-- Sección III -->
         <h5 class="mt-4">SECCIÓN III - Información de la Operación Sospechosa</h5>
+
         <div class="mb-3">
-            <label class="form-label">27. Valor Total de la Operación Sospechosa ($)</label>
-            <input type="number" class="form-control">
+            <label class="form-label" for="valor_total_operacion">27. Valor Total de la Operación Sospechosa ($)</label>
+            <input type="number" class="form-control" id="valor_total_operacion" name="valor_total_operacion">
         </div>
+
         <div class="mb-3">
             <label class="form-label">28. Tipo de operación</label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipoOperacion" id="nacional">
-                <label class="form-check-label" for="nacional">Operación Nacional</label>
+                <input class="form-check-input" type="radio" id="tipo_nacional" name="tipo_operacion" value="nacional">
+                <label class="form-check-label" for="tipo_nacional">Operación Nacional</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipoOperacion" id="internacional">
-                <label class="form-check-label" for="internacional">Operación Internacional</label>
+                <input class="form-check-input" type="radio" id="tipo_internacional" name="tipo_operacion"
+                    value="internacional">
+                <label class="form-check-label" for="tipo_internacional">Operación Internacional</label>
             </div>
         </div>
+
         <div class="row mb-3">
             <label class="form-label">29. Fecha de la operación sospechosa</label>
             <div class="col-md-6">
-                <label class="form-label">Desde</label>
-                <input type="date" class="form-control">
+                <label class="form-label" for="fecha_desde_operacion">Desde</label>
+                <input type="date" class="form-control" id="fecha_desde_operacion" name="fecha_desde_operacion">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Hasta</label>
-                <input type="date" class="form-control">
+                <label class="form-label" for="fecha_hasta_operacion">Hasta</label>
+                <input type="date" class="form-control" id="fecha_hasta_operacion" name="fecha_hasta_operacion">
             </div>
         </div>
     </div>
 
+
     <div class="container border p-4 mt-2">
-        <h5 class="mt-4"></h5>
         <div class="row mb-3">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" id="btn_guardar">Enviar</button>
         </div>
     </div>
-    
+
 </body>
+
 </html>

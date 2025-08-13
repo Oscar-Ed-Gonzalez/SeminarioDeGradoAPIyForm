@@ -1,8 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-# Cambia aquí para PostgreSQL, por ejemplo:
-# DATABASE_URL = "postgresql+psycopg://user:pass@localhost:5432/rosdb"
 DATABASE_URL = "postgresql+psycopg2://postgres:contrasena123@localhost:5432/ros_db"
 
 engine = create_engine(

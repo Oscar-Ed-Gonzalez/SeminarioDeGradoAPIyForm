@@ -10,7 +10,7 @@ from .mappers import (
 
 app = FastAPI(title="ROS API", version="1.0.0")
 
-# Lista de orígenes permitidos (puedes poner '*' pero no es lo más seguro)
+# Lista de orígenes permitidos
 origins = [
     "http://127.0.0.1:5500",
     "http://localhost:5500"
@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],    # Permitir todas las cabeceras
 )
 
-# Crear tablas si no existen (para demo). En producción usa Alembic.
+# Crear tablas si no existen 
 Base.metadata.create_all(bind=engine)
 
 
@@ -37,7 +37,7 @@ def crear_reporte(ros: schemas.ROSIn, db: Session = Depends(get_db)):
       - Persona: 'vinculada_entidad' no puede ser NULL → por defecto True si no llega.
       - Operación: solo se inserta si llegan TODOS los campos obligatorios; si no, se omite.
     """
-    # Validación extra de institución (por si vinieran strings vacíos)
+    # Validación extra de institución 
     if not (ros.institucion_reportante.nombre_entidad
             and ros.institucion_reportante.tipo_entidad
             and ros.institucion_reportante.codigo_entidad):
@@ -67,7 +67,7 @@ def crear_reporte(ros: schemas.ROSIn, db: Session = Depends(get_db)):
             )
             db.add(inst)
 
-            # 3) persona_implicada (tu JSON actual trae 1 persona; si luego usas lista, haz un loop)
+            # 3) persona_implicada 
             p = ros.persona_implicada
             per = models.PersonaImplicada(
                 id_reporte=rep.id_reporte,
@@ -100,7 +100,7 @@ def crear_reporte(ros: schemas.ROSIn, db: Session = Depends(get_db)):
             )
             db.add(per)
 
-            # 4) operacion_sospechosa (solo si viene completa)
+            # 4) operacion_sospechosa 
             ops = ros.operacion_sospechosa
             if operacion_completa(ops):
                 op = models.OperacionSospechosa(
@@ -112,14 +112,14 @@ def crear_reporte(ros: schemas.ROSIn, db: Session = Depends(get_db)):
                     fecha_operacion_hasta=ops.fecha_hasta
                 )
                 db.add(op)
-            # Si no viene completa, la omitimos (puedes cambiar esto a 422 si quieres forzarla)
+            # Si no viene completa, la omitimos 
 
         return {"id_reporte": rep.id_reporte, "message": "created"}
 
     except HTTPException:
         raise
     except Exception as ex:
-        # Errores de integridad (checks, not nulls, etc.)
+        # Errores de integridad 
         raise HTTPException(status_code=400, detail=str(ex))
 
 
